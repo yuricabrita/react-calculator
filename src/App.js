@@ -1,23 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
+
+
+
+function Number(props) {
+  return (
+    <div className = "button">
+      <button onClick={props.onClick}>
+        {props.value}
+      </button>
+    </div>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="root">
+        <div className="app">
+            <div className="display">
+                <div>0</div>
+            </div>
+            <div className="button-panel">
+                <div>
+                    <div className="button"><button>AC</button></div>
+                    <div className="button"><button>+/-</button></div>
+                    <div className="button"><button>%</button></div>
+                    <div className="button orange"><button>÷</button></div>
+                </div>
+                <div>
+                    <Number value = {7}/>
+                    <Number value = {8}/>
+                    <Number value = {9}/>
+                    <div className="button orange"><button>x</button></div>
+                </div>
+                <div>
+                    <Number value = {4}/>
+                    <Number value = {5}/>
+                    <Number value = {6}/>
+                    <div className="button orange"><button>-</button></div>
+                </div>
+                <div>
+                    <Number value = {1}/>
+                    <Number value = {2}/>
+                    <Number value = {3}/>
+                    <div className="button orange"><button>+</button></div>
+                </div>
+                <div>
+                    <div className="button  wide"><button>0</button></div>
+                    <div className="button"><button>.</button></div>
+                    <div className="button orange"><button>=</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
   );
 }
