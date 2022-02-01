@@ -4,18 +4,20 @@ import React, { useState } from 'react';
 
 
 function Number(props) {
-  return (
-    <div className = "button">
+  return ( 
       <button onClick={props.onClick}>
         {props.value}
       </button>
-    </div>
   );
 }
 
 function App() {
 
   const [result, setResult] = useState(0);
+
+  function handleClick(e) {
+    setResult(e.target.value);
+  }
   return (
     <div className="App">
     <div id="root">
@@ -31,25 +33,30 @@ function App() {
                     <div className="button orange"><button>÷</button></div>
                 </div>
                 <div>
-                    <Number value = {7}/>
-                    <Number value = {8}/>
-                    <Number value = {9}/>
+                    <div className="button"><Number value = {7}/></div>
+                    <div className="button"><Number value = {8}/></div>
+                    <div className="button"><Number value = {9}/></div>
                     <div className="button orange"><button>x</button></div>
                 </div>
                 <div>
-                    <Number value = {4}/>
-                    <Number value = {5}/>
-                    <Number value = {6}/>
+                    <div className="button"><Number value = {4}/></div>
+                    <div className="button"><Number value = {5}/></div>
+                    <div className="button"><Number value = {6}/></div>
                     <div className="button orange"><button>-</button></div>
                 </div>
                 <div>
-                    <Number value = {1}/>
-                    <Number value = {2}/>
-                    <Number value = {3}/>
+                  <div className="button">
+                    <Number 
+                      value = {1}
+                      onClick = {(e) => handleClick(e)}
+                    />
+                  </div>
+                    <div className="button"><Number value = {2}/></div>
+                    <div className="button"><Number value = {3}/></div>
                     <div className="button orange"><button>+</button></div>
                 </div>
                 <div>
-                    <div className="button  wide"><button>0</button></div>
+                    <div className="button  wide"><Number value = {0}/></div>
                     <div className="button"><button>.</button></div>
                     <div className="button orange"><button>=</button></div>
                 </div>
