@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 
 
 
@@ -13,12 +14,14 @@ function Number(props) {
 }
 
 function App() {
+
+  const [result, setResult] = useState(0);
   return (
     <div className="App">
     <div id="root">
         <div className="app">
             <div className="display">
-                <div>0</div>
+                <div>{result}</div>
             </div>
             <div className="button-panel">
                 <div>
