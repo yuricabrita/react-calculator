@@ -26,7 +26,8 @@ function App() {
 
   function handleClick(e) {
     if(e.target.innerHTML === ".") {
-      if(result.includes(".")) {
+      if(result.toString().includes(".")) {
+        console.log("sadasda")
         return;
       }
     } 
