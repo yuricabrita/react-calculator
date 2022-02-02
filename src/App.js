@@ -3,31 +3,25 @@ import React, { useState } from 'react';
 
 
 
-function Number(props) {
-  return ( 
+function Button(props) {
+  return (
+    <div className= {props.className}>
       <button onClick={props.onClick}>
         {props.value}
       </button>
+    </div> 
   );
 }
-
-function AcButton(props) {
-  return ( 
-      <button onClick={props.onClick}>
-        {props.value}
-      </button>
-  );
-}
-
 
 function App() {
 
   const [result, setResult] = useState(0);
+  const [operator, setOperator] = useState("");
+  const [num2, setNum2] = useState(0);
 
-  function handleClick(e) {
+  const handleClick = (e) => {
     if(e.target.innerHTML === ".") {
       if(result.toString().includes(".")) {
-        console.log("sadasda")
         return;
       }
     } 
@@ -35,12 +29,22 @@ function App() {
       setResult(result * -1);
       return;
     }
+    else if(e.target.innerHTML === "AC") {
+      setResult(0);
+      return;
+    }
+    else if(e.target.innerHTML === "%") {
+      setResult((result / 100));
+      return;
+    }
+    else if(e.target.innerHTML === "+") {
+      if(operator === "") {
+        
+      }
+    }
     result !== 0 ? setResult(result + e.target.innerHTML) : setResult(e.target.innerHTML);
   }
 
-  function handleAC(e) {
-    setResult(0);
-  }
   return (
     <div className="App">
     <div id="root">
@@ -50,32 +54,32 @@ function App() {
             </div>
             <div className="button-panel">
                 <div>
-                    <div className="button"><Number value = {"AC"} onClick = {(e) => handleAC(e)}/></div>
-                    <div className="button"><Number value = {"+/-"} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><button>%</button></div>
+                    <Button value = {"AC"} className= "button" onClick = {handleClick}/>
+                    <Button value = {"+/-"} className= "button" onClick = {handleClick}/>
+                    <Button value = {"%"} className= "button" onClick = {handleClick}/>
                     <div className="button orange"><button>÷</button></div>
                 </div>
                 <div>
-                    <div className="button"><Number value = {7} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {8} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {9} onClick = {(e) => handleClick(e)}/></div>
+                    <Button value = {7} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {8} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {9} className= "button" onClick = {(e) => handleClick(e)}/>
                     <div className="button orange"><button>x</button></div>
                 </div>
                 <div>
-                    <div className="button"><Number value = {4} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {5} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {6} onClick = {(e) => handleClick(e)}/></div>
+                    <Button value = {4} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {5} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {6} className= "button" onClick = {(e) => handleClick(e)}/>
                     <div className="button orange"><button>-</button></div>
                 </div>
                 <div>
-                    <div className="button"><Number value = {1} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {2} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {3} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button orange"><button>+</button></div>
+                    <Button value = {1} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {2} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {3} className= "button" onClick = {(e) => handleClick(e)}/>
+                    <Button value = {"+"} className= "button orange" onClick = {(e) => handleClick(e)}/>
                 </div>
                 <div>
-                    <div className="button  wide"><Number value = {0} onClick = {(e) => handleClick(e)}/></div>
-                    <div className="button"><Number value = {"."} onClick = {(e) => handleClick(e)}/></div>
+                    <Button value = {0} className = {"button wide"} onClick = {(e) => handleClick(e)}/>
+                    <Button value = {"."} className= "button" onClick = {(e) => handleClick(e)}/>
                     <div className="button orange"><button>=</button></div>
                 </div>
             </div>
