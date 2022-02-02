@@ -29,6 +29,10 @@ function App() {
       if(result.includes(".")) {
         return;
       }
+    } 
+    else if(e.target.innerHTML === "+/-") {
+      setResult(result * -1);
+      return;
     }
     result !== 0 ? setResult(result + e.target.innerHTML) : setResult(e.target.innerHTML);
   }
@@ -46,7 +50,7 @@ function App() {
             <div className="button-panel">
                 <div>
                     <div className="button"><Number value = {"AC"} onClick = {(e) => handleAC(e)}/></div>
-                    <div className="button"><button>+/-</button></div>
+                    <div className="button"><Number value = {"+/-"} onClick = {(e) => handleClick(e)}/></div>
                     <div className="button"><button>%</button></div>
                     <div className="button orange"><button>÷</button></div>
                 </div>
