@@ -18,7 +18,7 @@ function App() {
   const [result, setResult] = useState(0);
   const [operator, setOperator] = useState("");
   const [num2, setNum2] = useState(0);
-  const [saveOperand, setSaveOperand] = useState(0);
+
   const handleClick = (e) => {
     if(e.target.innerHTML === ".") {
       if(result.toString().includes(".")) {
@@ -34,7 +34,6 @@ function App() {
     else if(e.target.innerHTML === "AC") {
       setResult(0);
       setNum2(0);
-      setSaveOperand(0);
       setOperator("");
       return;
     }
@@ -45,21 +44,22 @@ function App() {
     else if(["+","-","x","÷", "="].includes(e.target.innerHTML)) {
       if(num2 !== 0 && operator !== "" && e.target.innerHTML !== "=" && operator !== e.target.innerHTML) {  //update operator to the newly clicked one
         setOperator(e.target.innerHTML);
-        setSaveOperand(0);
+        setNum2(result);
+        setResult(0);
         return;
       }
-      if((e.target.innerHTML === "=" && operator === "+") || (e.target.innerHTML === "+" && operator === "+")) {
-        console.log("operand +")
-        if(saveOperand === 0) {
-          setSaveOperand(result);
-        }
-        setNum2(saveOperand);
+      // if(num2 !== 0 && operator !== "" && e.target.innerHTML !== "=" && operator === e.target.innerHTML) {  //update operator to the newly clicked one
+      //   console.log("asdsd")
+      //   if(e.target.innerHTML === "+") {
+      //     let saveNum = result;
+      //     setNum2(parseFloat(num2) + parseFloat(result));
+      //     return;
+      //   }
+      // }
+      if((e.target.innerHTML === "=" && operator === "+")) {
         setResult(parseFloat(num2) + parseFloat(result));
-        console.log("num2: " + num2 + " saveOperand: " + saveOperand + " result " + result)
+       //console.log("num2: " + num2 + " saveOperand: " + saveOperand + " result " + result)
         //setOperator("");
-        if(e.target.innerHTML === "+") {
-          setNum2(0); 
-        }
         return;
       }
       if(e.target.innerHTML === "=" && operator === "-") {
